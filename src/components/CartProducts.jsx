@@ -2,9 +2,9 @@ import { useSelector } from "react-redux";
 import Product from "./Product";
 
 const CartProducts = () => {
-  const { products, total, amount } = useSelector((store) => store.basket);
+  const { products, total } = useSelector((store) => store.basket);
   return (
-    <div>
+    <div className="py-4">
       <div>
         {products.map((item, i) => (
           <Product
@@ -17,7 +17,6 @@ const CartProducts = () => {
         ))}
       </div>
       <div className="flex flex-row items-center justify-evenly py-8">
-        <p>Total</p>
         <p className="text-2xl font-medium">Total</p>
         <p className="text-2x font-medium">${total}</p>
       </div>
