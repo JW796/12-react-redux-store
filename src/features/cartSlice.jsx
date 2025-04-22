@@ -8,8 +8,20 @@ const initialState = {
 }
 
 const cartSlice = createSlice({
-    name: "basket",
+    name: "cart",
     initialState,
+    reducers: {
+        increaseAmount: (state, {payload}) => {
+            const item = state.products.find(item => item.name === payload.name)
+            item.amount++
+        },
+        decreaseAmount: (state, {payload}) => {
+            const item = state.products.find(item => item.name === payload.name)
+            item.amount--
+        }
+    }
 })
+
+export const { increaseAmount, decreaseAmount } = cartSlice.actions;
 
 export default cartSlice.reducer;
