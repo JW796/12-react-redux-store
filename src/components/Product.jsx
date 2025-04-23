@@ -18,7 +18,7 @@ const Product = ({ name, price, image, amount }) => {
         <div className="flex flex-row items-center gap-4 text-gra-600 font-medium">
           <button
             className="text-xl"
-            onClick={() => {
+            onClick={() => { if (amount >1)
               dispatch(decreaseAmount({ name }));
             }}
           >
