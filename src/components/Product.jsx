@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { increaseAmount, decreaseAmount } from "../features/cartSlice";
+import { increaseAmount, decreaseAmount, removeItem } from "../features/cartSlice";
 
 
 const Product = ({ name, price, image, amount }) => {
@@ -11,15 +11,22 @@ const Product = ({ name, price, image, amount }) => {
       <div className="w-1/2 px-10">
         <p className="text-xl font-medium">{name}</p>
         <p className="text-lg tracking-wide">${price.toFixed(2)}</p>
-        <button className="text-red-500 tracking-wide pt-1 pb-3">Remove</button>
+        <button
+          className="text-red-500 tracking-wide pt-1 pb-3"
+          onClick={() => {
+            dispatch(removeItem({ name }));
+          }}
+        >
+          Remove
+        </button>
       </div>
       <div className="flex flex-col items-center">
         <p className="text-lg font-medium">Amount</p>
         <div className="flex flex-row items-center gap-4 text-gra-600 font-medium">
           <button
             className="text-xl"
-            onClick={() => { if (amount >1)
-              dispatch(decreaseAmount({ name }));
+            onClick={() => {
+              if (amount > 1) dispatch(decreaseAmount({ name }));
             }}
           >
             -
