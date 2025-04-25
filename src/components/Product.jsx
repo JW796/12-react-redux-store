@@ -26,7 +26,11 @@ const Product = ({ name, price, image, amount }) => {
           <button
             className="text-xl"
             onClick={() => {
-              if (amount > 1) dispatch(decreaseAmount({ name }));
+              if (amount === 1) {
+                dispatch(removeItem({ name }));
+                return;
+            }
+                dispatch(decreaseAmount({ name }));
             }}
           >
             -
